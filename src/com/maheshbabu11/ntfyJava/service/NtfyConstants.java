@@ -9,7 +9,6 @@ public class NtfyConstants {
     public static final String CONTENT_TYPE_VALUE = "text/plain; charset=UTF-8";
     public static final String DEFAULT_HOST = "ntfy.sh";
     public static final String NTFY_CONNECTION_ERROR_MSG = "Unable to connect to ntfy host";
-
     public static final String CONNECTION_ERROR_MSG = "Unable to open connection";
 
 }
