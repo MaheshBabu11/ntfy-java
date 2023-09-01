@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.maheshbabu11</groupId>
-  <artifactId>ntfy.java</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  <name>ntfy-java</name>
-  <description>A java client for ntfy</description>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.maheshbabu11</groupId>
+    <artifactId>ntfy.java</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>ntfy-java</name>
+    <description>A java client for ntfy</description>
+    <url>https://github.com/MaheshBabu11/ntfy-java</url>
+    <scm>
+        <url>https://github.com/MaheshBabu11/ntfy-java.git</url>
+        <connection>scm:git:https://github.com/MaheshBabu11/ntfy-java.git</connection>
+        <developerConnection>scm:git:https://github.com/MaheshBabu11/ntfy-java.git</developerConnection>
+    </scm>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Mahesh Babu</name>
+            <email>mahesh.b.pec@gmail.com</email>
+            <url>https://maheshbabu11.dev/</url>
+        </developer>
+    </developers>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+    </properties>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/MaheshBabu11/ntfy-java</url>
+        </repository>
+    </distributionManagement>
 </project>
