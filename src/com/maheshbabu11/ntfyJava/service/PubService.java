@@ -32,7 +32,6 @@ public class PubService {
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod(NtfyConstants.POST);
             con.setRequestProperty(NtfyConstants.HOST, host);
-            //con.setRequestProperty("Authorization","Bearer tk_kukgyojacd5t2ybcz2prep0i7tjcu");
             con.setRequestProperty(NtfyConstants.CONTENT_TYPE, NtfyConstants.CONTENT_TYPE_VALUE);
 
             // Enable input/output streams
