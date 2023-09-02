@@ -2,6 +2,7 @@ package ntfyJava.service;
 
 import ntfyJava.exception.NtfyConnectionException;
 import ntfyJava.exception.NtfyException;
+import ntfyJava.model.NtfyRequest;
 import ntfyJava.model.PRIORITY;
 
 import java.io.DataOutputStream;
@@ -13,38 +14,26 @@ import java.util.logging.Logger;
 public class PubServiceImpl implements PubService {
     private static final Logger logger = Logger.getLogger(PubServiceImpl.class.getName());
 
-    String response = null;
-    String url = null;
+
 
     @Override
-    public String publish(String message, String topic, String host) throws NtfyException {
-        return publishMessage(message, topic, host, null, PRIORITY.DEFAULT, null);
+    public String publish(NtfyRequest request) throws NtfyException {
+        return publishMessage(request);
     }
 
-    @Override
-    public String publish(String message, String topic, String host, String title) throws NtfyException {
-        return publishMessage(message, topic, host, title, PRIORITY.DEFAULT, null);
-    }
-
-    @Override
-    public String publish(String message, String topic, String host, String title, PRIORITY priority) throws NtfyException {
-        return publishMessage(message, topic, host, title, priority, null);
-    }
-
-    @Override
-    public String publish(String message, String topic, String host, String title, PRIORITY priority, String tags) throws NtfyException {
-        return publishMessage(message, topic, host, title, priority, tags);
-    }
-
-    private String publishMessage(String message, String topic, String host, String title, PRIORITY priority, String tags) throws NtfyException {
+    private String publishMessage(NtfyRequest request) throws NtfyException {
+        String response = null;
         try {
-            if (null == host) {
-                url = NtfyConstants.DEFAULT_URL;
-                host = NtfyConstants.DEFAULT_HOST;
+            if (null == request.getHost()) {
+                request.setUrl(NtfyConstants.DEFAULT_URL + request.getTopic());
+                request.setHost(NtfyConstants.DEFAULT_HOST);
             } else {
-                url = NtfyConstants.HTTPS + host + "/";
+                request.setUrl(NtfyConstants.HTTPS + request.getHost() + "/");
             }
-            response = sendPublishRequest(url + topic, message, host, title, priority, tags);
+            if (null == request.getPriority()) {
+                request.setPriority(PRIORITY.DEFAULT);
+            }
+            response = sendPublishRequest(request);
         } catch (IOException e) {
             logger.severe(NtfyConstants.CONNECTION_ERROR_MSG);
             throw new NtfyException(e);
@@ -53,30 +42,33 @@ public class PubServiceImpl implements PubService {
             throw new NtfyException(e);
         }
         return response;
+
     }
 
-    private static String sendPublishRequest(String url, String message, String host, String title, PRIORITY priority, String tags) throws IOException, NtfyConnectionException {
+    private String sendPublishRequest(NtfyRequest request) throws NtfyConnectionException, IOException {
         try {
-            URL obj = new URL(url);
+            URL obj = new URL(request.getUrl());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty(NtfyConstants.HOST, host);
-            if (null != title) {
-                con.setRequestProperty(NtfyConstants.TITLE, title);
+            con.setRequestMethod(NtfyConstants.POST);
+            con.setRequestProperty(NtfyConstants.HOST, request.getHost());
+            if (null != request.getTitle()) {
+                con.setRequestProperty(NtfyConstants.TITLE, request.getTitle());
             }
-            if (null != tags) {
-                con.setRequestProperty(NtfyConstants.TAGS, tags);
+            if (null != request.getTags()) {
+                con.setRequestProperty(NtfyConstants.TAGS, request.getTags());
             }
-            con.setRequestProperty(NtfyConstants.PRIORITY, String.valueOf(priority.getLevel()));
+            if(request.isMarkdown()){
+                con.setRequestProperty(NtfyConstants.MARKDOWN, NtfyConstants.YES);
+            }
+            con.setRequestProperty(NtfyConstants.PRIORITY, String.valueOf(request.getPriority().getLevel()));
             con.setRequestProperty(NtfyConstants.CONTENT_TYPE, NtfyConstants.CONTENT_TYPE_VALUE);
             // Enable input/output streams
             con.setDoOutput(true);
 
             try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
-                wr.writeBytes(message);
+                wr.writeBytes(request.getMessage());
                 wr.flush();
             }
-
             // Get the response from the server
             int responseCode = con.getResponseCode();
 
@@ -96,5 +88,6 @@ public class PubServiceImpl implements PubService {
             throw new IOException();
         }
     }
+
 
 }

@@ -14,5 +14,7 @@ public class NtfyConstants {
     public static final String TITLE = "Title";
     public static final String PRIORITY = "Priority";
     public static final String TAGS = "Tags";
+    public static final String MARKDOWN = "Markdown";
+    public static final String YES = "yes";
 
 }
