@@ -1,6 +1,7 @@
 package ntfyJava.service;
 
 import ntfyJava.exception.NtfyConnectionException;
+import ntfyJava.exception.NtfyException;
 import ntfyJava.model.PRIORITY;
 
 import java.io.DataOutputStream;
@@ -16,21 +17,26 @@ public class PubServiceImpl implements PubService {
     String url = null;
 
     @Override
-    public String publish(String message, String topic, String host) {
-        return publishMessage(message, topic, host, null, PRIORITY.DEFAULT);
+    public String publish(String message, String topic, String host) throws NtfyException {
+        return publishMessage(message, topic, host, null, PRIORITY.DEFAULT, null);
     }
 
     @Override
-    public String publish(String message, String topic, String host, String title) {
-        return publishMessage(message, topic, host, title, PRIORITY.DEFAULT);
+    public String publish(String message, String topic, String host, String title) throws NtfyException {
+        return publishMessage(message, topic, host, title, PRIORITY.DEFAULT, null);
     }
 
     @Override
-    public String publish(String message, String topic, String host, String title, PRIORITY priority) {
-        return publishMessage(message, topic, host, title, priority);
+    public String publish(String message, String topic, String host, String title, PRIORITY priority) throws NtfyException {
+        return publishMessage(message, topic, host, title, priority, null);
     }
 
-    private String publishMessage(String message, String topic, String host, String title, PRIORITY priority) {
+    @Override
+    public String publish(String message, String topic, String host, String title, PRIORITY priority, String tags) throws NtfyException {
+        return publishMessage(message, topic, host, title, priority, tags);
+    }
+
+    private String publishMessage(String message, String topic, String host, String title, PRIORITY priority, String tags) throws NtfyException {
         try {
             if (null == host) {
                 url = NtfyConstants.DEFAULT_URL;
@@ -38,16 +44,18 @@ public class PubServiceImpl implements PubService {
             } else {
                 url = NtfyConstants.HTTPS + host + "/";
             }
-            response = sendPublishRequest(url + topic, message, host, title, priority);
+            response = sendPublishRequest(url + topic, message, host, title, priority, tags);
         } catch (IOException e) {
             logger.severe(NtfyConstants.CONNECTION_ERROR_MSG);
+            throw new NtfyException(e);
         } catch (NtfyConnectionException e) {
             logger.severe(NtfyConstants.NTFY_CONNECTION_ERROR_MSG);
+            throw new NtfyException(e);
         }
         return response;
     }
 
-    private static String sendPublishRequest(String url, String message, String host, String title, PRIORITY priority) throws IOException, NtfyConnectionException {
+    private static String sendPublishRequest(String url, String message, String host, String title, PRIORITY priority, String tags) throws IOException, NtfyConnectionException {
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -55,6 +63,9 @@ public class PubServiceImpl implements PubService {
             con.setRequestProperty(NtfyConstants.HOST, host);
             if (null != title) {
                 con.setRequestProperty(NtfyConstants.TITLE, title);
+            }
+            if (null != tags) {
+                con.setRequestProperty(NtfyConstants.TAGS, tags);
             }
             con.setRequestProperty(NtfyConstants.PRIORITY, String.valueOf(priority.getLevel()));
             con.setRequestProperty(NtfyConstants.CONTENT_TYPE, NtfyConstants.CONTENT_TYPE_VALUE);

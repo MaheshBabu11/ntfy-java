@@ -13,5 +13,6 @@ public class NtfyConstants {
     public static final String HTTPS = "https://";
     public static final String TITLE = "Title";
     public static final String PRIORITY = "Priority";
+    public static final String TAGS = "Tags";
 
 }
