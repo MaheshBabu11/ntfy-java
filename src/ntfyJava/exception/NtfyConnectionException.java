@@ -1,6 +1,6 @@
-package com.maheshbabu11.ntfyJava.exception;
+package ntfyJava.exception;
 
-public class NtfyConnectionException extends  Exception{
+public class NtfyConnectionException extends Exception {
 
     public NtfyConnectionException() {
         super();

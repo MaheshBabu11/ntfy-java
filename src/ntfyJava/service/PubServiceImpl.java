@@ -1,6 +1,7 @@
-package com.maheshbabu11.ntfyJava.service;
+package ntfyJava.service;
 
-import com.maheshbabu11.ntfyJava.exception.NtfyConnectionException;
+import ntfyJava.exception.NtfyConnectionException;
+import ntfyJava.model.PRIORITY;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -8,33 +9,56 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Logger;
 
-public class PubService {
+public class PubServiceImpl implements PubService {
+    private static final Logger logger = Logger.getLogger(PubServiceImpl.class.getName());
 
-    private static final Logger logger = Logger.getLogger(PubService.class.getName());
+    String response = null;
+    String url = null;
 
+    @Override
     public String publish(String message, String topic, String host) {
+        return publishMessage(message, topic, host, null, PRIORITY.DEFAULT);
+    }
 
-        String response = null;
+    @Override
+    public String publish(String message, String topic, String host, String title) {
+        return publishMessage(message, topic, host, title, PRIORITY.DEFAULT);
+    }
+
+    @Override
+    public String publish(String message, String topic, String host, String title, PRIORITY priority) {
+        return publishMessage(message, topic, host, title, priority);
+    }
+
+    private String publishMessage(String message, String topic, String host, String title, PRIORITY priority) {
         try {
-            response = sendPublishRequest(NtfyConstants.DEFAULT_URL + "/" + topic, message, host);
+            if (null == host) {
+                url = NtfyConstants.DEFAULT_URL;
+                host = NtfyConstants.DEFAULT_HOST;
+            } else {
+                url = NtfyConstants.HTTPS + host + "/";
+            }
+            response = sendPublishRequest(url + topic, message, host, title, priority);
         } catch (IOException e) {
             logger.severe(NtfyConstants.CONNECTION_ERROR_MSG);
         } catch (NtfyConnectionException e) {
             logger.severe(NtfyConstants.NTFY_CONNECTION_ERROR_MSG);
         }
         return response;
-
     }
 
-    public static String sendPublishRequest(String url, String message, String host) throws IOException, NtfyConnectionException {
+    private static String sendPublishRequest(String url, String message, String host, String title, PRIORITY priority) throws IOException, NtfyConnectionException {
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            con.setRequestMethod(NtfyConstants.POST);
+            con.setRequestMethod("POST");
             con.setRequestProperty(NtfyConstants.HOST, host);
             //con.setRequestProperty("Authorization","Bearer tk_kukgyojacd5t2ybcz2prep0i7tjcu");
+            if (null != title) {
+                con.setRequestProperty(NtfyConstants.TITLE, title);
+            }
+            con.setRequestProperty(NtfyConstants.PRIORITY, String.valueOf(priority.getLevel()));
             con.setRequestProperty(NtfyConstants.CONTENT_TYPE, NtfyConstants.CONTENT_TYPE_VALUE);
-
             // Enable input/output streams
             con.setDoOutput(true);
 
@@ -62,4 +86,5 @@ public class PubService {
             throw new IOException();
         }
     }
+
 }
