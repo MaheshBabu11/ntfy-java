@@ -53,7 +53,6 @@ public class PubServiceImpl implements PubService {
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod("POST");
             con.setRequestProperty(NtfyConstants.HOST, host);
-            //con.setRequestProperty("Authorization","Bearer tk_kukgyojacd5t2ybcz2prep0i7tjcu");
             if (null != title) {
                 con.setRequestProperty(NtfyConstants.TITLE, title);
             }
