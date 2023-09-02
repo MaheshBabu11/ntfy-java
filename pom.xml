@@ -41,4 +41,12 @@
             <url>https://maven.pkg.github.com/MaheshBabu11/ntfy-java</url>
         </repository>
     </distributionManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+    </dependencies>
 </project>

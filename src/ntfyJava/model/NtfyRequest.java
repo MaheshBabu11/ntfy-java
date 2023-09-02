@@ -1,14 +1,25 @@
 package ntfyJava.model;
 
+import java.util.List;
+
 public class NtfyRequest {
     private String topic;
     private String message;
     private String host;
     private String title;
     private PRIORITY priority;
-    private String tags;
+    private List<String> tags;
     private String url;
     private boolean isMarkdown;
+
+    private List<Action> actions;
+
+    public List<Action> getActions() {
+        return actions;
+    }
+    public void setActions(List<Action> actions) {
+        this.actions = actions;
+    }
 
     public boolean isMarkdown() {
         return isMarkdown;
@@ -58,11 +69,12 @@ public class NtfyRequest {
         this.priority = priority;
     }
 
-    public String getTags() {
+
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 

@@ -3,8 +3,12 @@ package ntfyJava.example;
 import ntfyJava.NotificationClient;
 import ntfyJava.core.Client;
 import ntfyJava.exception.NtfyException;
+import ntfyJava.model.Action;
 import ntfyJava.model.NtfyRequest;
 import ntfyJava.model.PRIORITY;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Example {
 
@@ -16,8 +20,18 @@ public class Example {
         request.setHost(null);
         request.setTitle("This is the obj msg");
         request.setPriority(PRIORITY.MAX);
-        request.setTags("+1,warning");
+
+        Action action = new Action();
+        action.setAction("view");
+        action.setLabel("Open github");
+        action.setUrl("https://github.com/MaheshBabu11/ntfy-java");
+        action.setClear(true);
+
+        List<Action> actions = new ArrayList<>(List.of(action));
+        List<String> tags = new ArrayList(List.of("+1","warning"));
+        request.setTags(tags);
         request.setMarkdown(true);
+        request.setActions(actions);
         client.sendNotification(request);
     }
 }

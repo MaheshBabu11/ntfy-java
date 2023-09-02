@@ -6,7 +6,7 @@ import ntfyJava.service.PubServiceImpl;
 
 public final class NotificationClient {
 
-    public static Client getClient() {
+    public Client getClient() {
         PubServiceImpl pubService = new PubServiceImpl();
         return new ClientImpl(pubService);
 
