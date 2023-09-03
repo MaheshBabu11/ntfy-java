@@ -24,6 +24,7 @@ public class Example {
 //        request.setAttach("https://media.licdn.com/dms/image/D4E03AQEZTNXuX3kG7g/profile-displayphoto-shrink_400_400/0/1669618932666?e=1699488000&v=beta&t=q2z_UDFvwTZa02SligKZqgwk66BjuXQZxWtQF_K1Jqw");
 //        request.setFileName("Screenshot.png");
         request.setIcon("https://styles.redditmedia.com/t5_32uhe/styles/communityIcon_xnt6chtnr2j21.png");
+        request.setEmail("mahesh.b.pec@gmail.com");
 
         Action action = new Action();
         action.setAction(ACTIONS.VIEW);

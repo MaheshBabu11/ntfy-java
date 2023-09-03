@@ -68,6 +68,29 @@ public class NtfyRequest {
      */
     private String icon;
     /**
+     * The email address to which the notification is to be sent.
+     */
+    private String email;
+
+    /**
+     * Get the email address to which the notification is to be sent.
+     *
+     * @return The email address as a String.
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Set the email address to which the notification is to be sent.
+     *
+     * @param email The email address to set as a String.
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
      * Get the icon image URL that needs to be used in the notification.
      *
      * @return The icon image URL as a String.

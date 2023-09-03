@@ -14,6 +14,15 @@ public class RequestModel {
     private String attach;
     private String fileName;
     private String icon;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getIcon() {
         return icon;
