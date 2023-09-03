@@ -10,8 +10,26 @@ public class RequestModel {
     private List<String> tags;
     private int priority;
     private boolean markdown;
-
     private List<Action> actions;
+    private String attach;
+
+    private String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getAttach() {
+        return attach;
+    }
+
+    public void setAttach(String attach) {
+        this.attach = attach;
+    }
 
     public List<Action> getActions() {
         return actions;

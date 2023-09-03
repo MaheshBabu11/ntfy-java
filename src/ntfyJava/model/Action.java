@@ -1,17 +1,17 @@
 package ntfyJava.model;
 
 public class Action {
-    private String action;
+    private ACTIONS action;
     private String label;
     private String url;
     private boolean clear;
     private String body;
 
-    public String getAction() {
+    public ACTIONS getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(ACTIONS action) {
         this.action = action;
     }
 

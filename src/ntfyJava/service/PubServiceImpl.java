@@ -91,6 +91,8 @@ public class PubServiceImpl implements PubService {
         model.setMarkdown(request.isMarkdown());
         model.setPriority(request.getPriority().getLevel());
         model.setActions(request.getActions());
+        model.setAttach(request.getAttach());
+        model.setFileName(request.getFileName());
         return model;
     }
 
