@@ -11,7 +11,7 @@ import ntfyJava.model.PRIORITY;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Example {
+public class PublishExample {
 
     public static void main(String[] args) throws NtfyException {
         Client client = new NotificationClient().getClient();

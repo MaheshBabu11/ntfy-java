@@ -11,10 +11,7 @@ public class NtfyConstants {
     public static final String NTFY_CONNECTION_ERROR_MSG = "Unable to connect to ntfy host";
     public static final String CONNECTION_ERROR_MSG = "Unable to open connection";
     public static final String HTTPS = "https://";
-    public static final String TITLE = "Title";
-    public static final String PRIORITY = "Priority";
-    public static final String TAGS = "Tags";
-    public static final String MARKDOWN = "Markdown";
-    public static final String YES = "yes";
+    public static final String GET = "GET";
+
 
 }
