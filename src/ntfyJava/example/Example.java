@@ -25,6 +25,7 @@ public class Example {
 //        request.setFileName("Screenshot.png");
         request.setIcon("https://styles.redditmedia.com/t5_32uhe/styles/communityIcon_xnt6chtnr2j21.png");
         request.setEmail("mahesh.b.pec@gmail.com");
+        request.setPhone("");
 
         Action action = new Action();
         action.setAction(ACTIONS.VIEW);

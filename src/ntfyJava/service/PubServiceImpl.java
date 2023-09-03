@@ -95,6 +95,7 @@ public class PubServiceImpl implements PubService {
         model.setFileName(request.getFileName());
         model.setIcon(request.getIcon());
         model.setEmail(request.getEmail());
+        model.setCall(request.getPhone());
         return model;
     }
 

@@ -15,6 +15,15 @@ public class RequestModel {
     private String fileName;
     private String icon;
     private String email;
+    private String call;
+
+    public String getCall() {
+        return call;
+    }
+
+    public void setCall(String call) {
+        this.call = call;
+    }
 
     public String getEmail() {
         return email;

@@ -73,6 +73,30 @@ public class NtfyRequest {
     private String email;
 
     /**
+     * The phone number to which the notification will be read to via call.
+     */
+    private String phone;
+
+    /**
+     * Get the phone number to which the notification will be read via a call.
+     *
+     * @return The phone number as a String.
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * Set the phone number to which the notification will be read via a call.
+     *
+     * @param phone The phone number to set as a String.
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
+    /**
      * Get the email address to which the notification is to be sent.
      *
      * @return The email address as a String.
