@@ -12,8 +12,16 @@ public class RequestModel {
     private boolean markdown;
     private List<Action> actions;
     private String attach;
-
     private String fileName;
+    private String icon;
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public String getFileName() {
         return fileName;

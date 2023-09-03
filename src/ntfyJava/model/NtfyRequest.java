@@ -64,6 +64,29 @@ public class NtfyRequest {
     private String fileName;
 
     /**
+     * The icon image url that needs to be used in the notification
+     */
+    private String icon;
+    /**
+     * Get the icon image URL that needs to be used in the notification.
+     *
+     * @return The icon image URL as a String.
+     */
+    public String getIcon() {
+        return icon;
+    }
+
+    /**
+     * Set the icon image URL that needs to be used in the notification.
+     *
+     * @param icon The icon image URL to set as a String.
+     */
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+
+    /**
      * Get the name of the local file that needs to be attached with the message.
      *
      * @return The file name as a String.

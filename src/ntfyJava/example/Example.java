@@ -21,8 +21,10 @@ public class Example {
         request.setHost(null);
         request.setTitle("This is the obj msg");
         request.setPriority(PRIORITY.MAX);
-        request.setAttach("https://media.licdn.com/dms/image/D4E03AQEZTNXuX3kG7g/profile-displayphoto-shrink_400_400/0/1669618932666?e=1699488000&v=beta&t=q2z_UDFvwTZa02SligKZqgwk66BjuXQZxWtQF_K1Jqw");
-        request.setFileName("Screenshot.png");
+//        request.setAttach("https://media.licdn.com/dms/image/D4E03AQEZTNXuX3kG7g/profile-displayphoto-shrink_400_400/0/1669618932666?e=1699488000&v=beta&t=q2z_UDFvwTZa02SligKZqgwk66BjuXQZxWtQF_K1Jqw");
+//        request.setFileName("Screenshot.png");
+        request.setIcon("https://styles.redditmedia.com/t5_32uhe/styles/communityIcon_xnt6chtnr2j21.png");
+
         Action action = new Action();
         action.setAction(ACTIONS.VIEW);
         action.setLabel("Open github");
@@ -31,7 +33,7 @@ public class Example {
 
         List<Action> actions = new ArrayList<>(List.of(action));
         List<String> tags = new ArrayList(List.of("+1", "warning"));
-        request.setTags(tags);
+        //request.setTags(tags);
         request.setMarkdown(true);
         request.setActions(actions);
         client.sendNotification(request);
