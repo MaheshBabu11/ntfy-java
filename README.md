@@ -1,5 +1,5 @@
 
-# Ntfy Java  ![](https://github.com/binwiederhier/ntfy/blob/main/web/public/static/images/ntfy.png)
+# Ntfy Java  <img align="right" src="https://github.com/binwiederhier/ntfy/blob/main/web/public/static/images/ntfy.png">
 
 Java library for publishing/recieving message from a [ntfy](https://github.com/binwiederhier/ntfy) server.
 
