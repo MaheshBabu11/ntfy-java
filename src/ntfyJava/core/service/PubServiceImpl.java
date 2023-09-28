@@ -1,11 +1,11 @@
-package ntfyJava.service;
+package ntfyJava.core.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ntfyJava.exception.NtfyConnectionException;
-import ntfyJava.exception.NtfyException;
-import ntfyJava.model.NtfyRequest;
-import ntfyJava.model.PRIORITY;
-import ntfyJava.model.RequestModel;
+import ntfyJava.core.exception.NtfyConnectionException;
+import ntfyJava.core.exception.NtfyException;
+import ntfyJava.core.model.NtfyRequest;
+import ntfyJava.core.model.PRIORITY;
+import ntfyJava.core.model.RequestModel;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class PubServiceImpl implements PubService {
     private String publishMessage(NtfyRequest request) throws NtfyException {
         String response = null;
         try {
-            if (null == request.getHost()) {
+            if (null==request.getHost()) {
                 request.setUrl(NtfyConstants.DEFAULT_URL);
                 request.setHost(NtfyConstants.DEFAULT_HOST);
             } else {

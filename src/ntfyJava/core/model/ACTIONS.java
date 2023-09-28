@@ -1,4 +1,4 @@
-package ntfyJava.model;
+package ntfyJava.core.model;
 
 public enum ACTIONS {
 

@@ -1,4 +1,4 @@
-package ntfyJava.service;
+package ntfyJava.core.service;
 
 public class NtfyConstants {
 

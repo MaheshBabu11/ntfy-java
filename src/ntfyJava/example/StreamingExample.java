@@ -1,6 +1,6 @@
 package ntfyJava.example;
 
-import ntfyJava.service.StreamingService;
+import ntfyJava.core.service.StreamingService;
 
 public class StreamingExample {
     public static void main(String[] args) {

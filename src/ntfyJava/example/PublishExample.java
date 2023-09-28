@@ -1,12 +1,10 @@
 package ntfyJava.example;
 
-import ntfyJava.NotificationClient;
-import ntfyJava.core.Client;
-import ntfyJava.exception.NtfyException;
-import ntfyJava.model.ACTIONS;
-import ntfyJava.model.Action;
-import ntfyJava.model.NtfyRequest;
-import ntfyJava.model.PRIORITY;
+
+import ntfyJava.NtfyClient;
+import ntfyJava.core.PubClient;
+import ntfyJava.core.exception.NtfyException;
+import ntfyJava.core.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +12,11 @@ import java.util.List;
 public class PublishExample {
 
     public static void main(String[] args) throws NtfyException {
-        Client client = new NotificationClient().getClient();
+        PubClient client = new NtfyClient(ClientType.PUB).getClient();
         NtfyRequest request = new NtfyRequest();
+       // request.setHost("");
         request.setTopic("test_ntfy");
         request.setMessage("Look ma, **bold text**, *italics*, ...");
-        request.setHost(null);
         request.setTitle("This is the obj msg");
         request.setPriority(PRIORITY.MAX);
 //        request.setAttach("https://media.licdn.com/dms/image/D4E03AQEZTNXuX3kG7g/profile-displayphoto-shrink_400_400/0/1669618932666?e=1699488000&v=beta&t=q2z_UDFvwTZa02SligKZqgwk66BjuXQZxWtQF_K1Jqw");

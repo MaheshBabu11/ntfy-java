@@ -1,4 +1,4 @@
-package ntfyJava.exception;
+package ntfyJava.core.exception;
 
 public class NtfyException extends Exception{
     public NtfyException() {

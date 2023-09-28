@@ -1,17 +1,17 @@
 package ntfyJava.core;
 
-import ntfyJava.exception.NtfyException;
-import ntfyJava.model.NtfyRequest;
-import ntfyJava.service.PubService;
+import ntfyJava.core.exception.NtfyException;
+import ntfyJava.core.model.NtfyRequest;
+import ntfyJava.core.service.PubService;
 
 import java.util.logging.Logger;
 
-public class ClientImpl implements Client {
+public class PubClientImpl implements PubClient {
 
-    private static final Logger logger = Logger.getLogger(ClientImpl.class.getName());
+    private static final Logger logger = Logger.getLogger(PubClientImpl.class.getName());
     private final PubService pubService;
 
-    public ClientImpl(PubService pubService) {
+    public PubClientImpl(PubService pubService) {
         this.pubService = pubService;
     }
 

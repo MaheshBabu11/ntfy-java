@@ -1,4 +1,4 @@
-package ntfyJava.model;
+package ntfyJava.core.model;
 
 public enum PRIORITY {
     MAX("Max", 5),
