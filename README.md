@@ -113,3 +113,11 @@ public class PublishExample {
 }
 
 ```
+## Features in development
+
+* Support for SUB client. This includes a streaming service to receive notifications from the ntfy server.
+* Support for advanced features like access tokens, authentication, etc.
+
+## More Info
+
+To know more abt ntfy and refer the official docs, visit [here.](https://docs.ntfy.sh/)
