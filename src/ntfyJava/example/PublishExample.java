@@ -31,7 +31,7 @@ public class PublishExample {
         action.setClear(true);
 
         List<Action> actions = new ArrayList<>(List.of(action));
-        List<String> tags = new ArrayList(List.of("+1", "warning"));
+        List<String> tags = new ArrayList<>(List.of("+1", "warning"));
         request.setTags(tags);
         request.setMarkdown(true);
         request.setActions(actions);

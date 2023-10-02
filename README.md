@@ -12,14 +12,22 @@ provide a neat way to create a client/streaming service to send/receive notifica
 
 ## Usage
 
-### 1. Creating a new Client
+### 1. Adding the dependency
+```xml
+    <dependency>
+        <groupId>com.github.maheshbabu11</groupId>
+        <artifactId>ntfy.java</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+````
+### 2. Creating a new Client
     
     PubClient client = new NtfyClient(ClientType.PUB).getClient();
 
 Here, the client type can be either `PUB` or `SUB` depending on the type of client you want to create.
 Currently, the library supports only `PUB` client.
 
-### 2. Creating the message as a JSON object
+### 3. Creating the message as a JSON object
 
     NtfyRequest request = new NtfyRequest();
 
@@ -55,7 +63,7 @@ Phone numbers have to be previously verified (via the web app), so this feature 
   * `ACTIONS.HTTP` -The http action sends a HTTP request when the action button is tapped. You can use this to trigger REST APIs for whatever systems you have, e.g. opening the garage door, or turning on/off lights.
 
   To know more about the Actions, visit [here.](https://docs.ntfy.sh/publish/#action-buttons)
-### 3. Sending the message
+### 4. Sending the message
 
     client.sendNotification(request);
 
