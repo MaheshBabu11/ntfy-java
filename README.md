@@ -120,4 +120,4 @@ public class PublishExample {
 
 ## More Info
 
-To know more abt ntfy and refer the official docs, visit [here.](https://docs.ntfy.sh/)
+To know more about ntfy and to refer the official docs, visit [here.](https://docs.ntfy.sh/)
