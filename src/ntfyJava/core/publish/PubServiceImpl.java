@@ -1,4 +1,4 @@
-package ntfyJava.core.service;
+package ntfyJava.core.publish;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ntfyJava.core.exception.NtfyConnectionException;
@@ -6,6 +6,7 @@ import ntfyJava.core.exception.NtfyException;
 import ntfyJava.core.model.NtfyRequest;
 import ntfyJava.core.model.PRIORITY;
 import ntfyJava.core.model.RequestModel;
+import ntfyJava.core.common.NtfyConstants;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -40,12 +41,14 @@ public class PubServiceImpl implements PubService {
         } catch (NtfyConnectionException e) {
             logger.severe(NtfyConstants.NTFY_CONNECTION_ERROR_MSG);
             throw new NtfyException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
         return response;
 
     }
 
-    private String sendPublishRequest(NtfyRequest request) throws NtfyConnectionException, IOException {
+    private String sendPublishRequest(NtfyRequest request) throws Exception {
         try {
             URL obj = new URL(request.getUrl());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -72,12 +75,12 @@ public class PubServiceImpl implements PubService {
                 }
                 return response.toString();
             } else {
-                throw new NtfyConnectionException(NtfyConstants.NTFY_CONNECTION_ERROR_MSG);
+                throw new NtfyConnectionException(NtfyConstants.NTFY_CONNECTION_ERROR_MSG + " : " + responseCode);
             }
 
 
         } catch (IOException e) {
-            throw new IOException();
+            throw new NtfyConnectionException(NtfyConstants.CONNECTION_ERROR_MSG, e);
         }
 
     }

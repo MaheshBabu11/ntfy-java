@@ -1,20 +1,26 @@
 package ntfyJava;
 
-import ntfyJava.core.PubClient;
-import ntfyJava.core.PubClientImpl;
+import ntfyJava.core.publish.PubClient;
+import ntfyJava.core.publish.PubClientImpl;
 import ntfyJava.core.model.ClientType;
-import ntfyJava.core.service.PubServiceImpl;
+import ntfyJava.core.publish.PubServiceImpl;
 
 public final class NtfyClient {
 
-    private final PubClient client;
+    private PubClient pubClient;
+
 
     public NtfyClient(ClientType type) {
         switch (type) {
             case PUB:
                 PubServiceImpl pubService = new PubServiceImpl();
-                this.client = new PubClientImpl(pubService);
+                this.pubClient = new PubClientImpl(pubService);
                 break;
+            case SUB:
+                break;
+
+
+
             default:
                 throw new IllegalArgumentException("Invalid client type");
         }
@@ -22,7 +28,7 @@ public final class NtfyClient {
     }
 
     public PubClient getClient() {
-        return client;
+        return pubClient;
     }
 }
 

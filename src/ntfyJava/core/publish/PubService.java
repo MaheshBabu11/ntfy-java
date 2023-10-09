@@ -1,4 +1,4 @@
-package ntfyJava.core.service;
+package ntfyJava.core.publish;
 
 import ntfyJava.core.exception.NtfyException;
 import ntfyJava.core.model.NtfyRequest;

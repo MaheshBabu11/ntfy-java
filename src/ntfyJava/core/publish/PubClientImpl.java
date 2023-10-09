@@ -1,8 +1,7 @@
-package ntfyJava.core;
+package ntfyJava.core.publish;
 
 import ntfyJava.core.exception.NtfyException;
 import ntfyJava.core.model.NtfyRequest;
-import ntfyJava.core.service.PubService;
 
 import java.util.logging.Logger;
 

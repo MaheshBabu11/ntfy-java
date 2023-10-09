@@ -2,7 +2,7 @@ package ntfyJava.example;
 
 
 import ntfyJava.NtfyClient;
-import ntfyJava.core.PubClient;
+import ntfyJava.core.publish.PubClient;
 import ntfyJava.core.exception.NtfyException;
 import ntfyJava.core.model.*;
 
@@ -14,7 +14,7 @@ public class PublishExample {
     public static void main(String[] args) throws NtfyException {
         PubClient client = new NtfyClient(ClientType.PUB).getClient();
         NtfyRequest request = new NtfyRequest();
-        request.setTopic("test_ntfy");
+        request.setTopic("test_ntfy2");
         request.setMessage("Look ma, **bold text**, *italics*, ...");
         request.setTitle("This is the obj msg");
         request.setPriority(PRIORITY.MAX);
