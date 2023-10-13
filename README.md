@@ -2,6 +2,7 @@
 # Ntfy Java  <img align="right" src="https://github.com/binwiederhier/ntfy/blob/main/web/public/static/images/ntfy.png">
 
 [![Maven Package](https://github.com/MaheshBabu11/Excel2DataMap/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/MaheshBabu11/Excel2DataMap/actions/workflows/maven-publish.yml)
+![Coverage](.github/badges/jacoco.svg)
 
 Java library for publishing/receiving messages from a [ntfy](https://github.com/binwiederhier/ntfy) server.
 
