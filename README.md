@@ -1,6 +1,9 @@
 
 # Ntfy Java  <img align="right" src="https://github.com/binwiederhier/ntfy/blob/main/web/public/static/images/ntfy.png">
 
+[![Maven Package](https://github.com/MaheshBabu11/Excel2DataMap/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/MaheshBabu11/Excel2DataMap/actions/workflows/maven-publish.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/maheshbabu11/ntfy-java/badge.svg)](https://snyk.io/test/github//maheshbabu11/ntfy-java/)
+
 Java library for publishing/receiving messages from a [ntfy](https://github.com/binwiederhier/ntfy) server.
 
 ntfy (pronounce: notify) is a simple HTTP-based pub-sub notification service. It allows you to send notifications to your 
