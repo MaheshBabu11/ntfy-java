@@ -55,6 +55,12 @@ public class PubServiceImpl implements PubService {
             con.setRequestMethod(NtfyConstants.POST);
             con.setRequestProperty(NtfyConstants.CONTENT_TYPE, "application/json");
 
+            //handle authentication (if supplied)
+            if(request.getAccessToken() != null){
+                con.setRequestProperty("Authorization", "Bearer " + request.getAuthToken());
+            }else if(request.getAuthToken() != null){
+                con.setRequestProperty("Authorization", "Basic " + request.getAuthToken());
+            }
             // Enable input/output streams
             con.setDoOutput(true);
 

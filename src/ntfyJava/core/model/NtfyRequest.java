@@ -1,5 +1,6 @@
 package ntfyJava.core.model;
 
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -76,6 +77,52 @@ public class NtfyRequest {
      * The phone number to which the notification will be read to via call.
      */
     private String phone;
+
+    /**
+     * Access token, generated in ntfy CLI
+     */
+    private String accessToken;
+    /**
+     * Basic auth in format username:password
+     */
+    private String authToken;
+
+
+    /**
+     * Sets the auth token (Base64 of username:password)
+     *
+     * @param userCombo username/password combo for generation of access token
+     */
+    public void setAuthToken(String userCombo){
+        this.authToken = Base64.getEncoder().encodeToString(userCombo.getBytes());
+    }
+
+    /**
+     * Get the auth token to authenticate to Server
+     *
+     * @return auth token as String
+     */
+    public String getAuthToken(){
+        return this.authToken;
+    }
+
+
+    /**
+     * Get the accessToken for Authentication
+     *
+     * @return access token
+     */
+    public String getAccessToken(){
+        return this.accessToken;
+    }
+
+    /**
+     * @param accessToken The authToken from CLI
+     */
+    public void setAccessToken(String accessToken){
+        this.accessToken = accessToken;
+    }
+
 
     /**
      * Get the phone number to which the notification will be read via a call.
