@@ -83,7 +83,6 @@ package ntfyJava.example;
 import ntfyJava.NtfyClient;
 import ntfyJava.core.publish.PubClient;
 import ntfyJava.core.exception.NtfyException;
-import ntfyJava.core.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
