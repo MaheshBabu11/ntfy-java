@@ -18,9 +18,6 @@ public final class NtfyClient {
                 break;
             case SUB:
                 break;
-
-
-
             default:
                 throw new IllegalArgumentException("Invalid client type");
         }

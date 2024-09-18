@@ -25,15 +25,17 @@ public class PubServiceImpl implements PubService {
     private String publishMessage(NtfyRequest request) throws NtfyException {
         String response = null;
         try {
-            if (null==request.getHost()) {
+            if (null == request.getHost()) {
                 request.setUrl(NtfyConstants.DEFAULT_URL);
                 request.setHost(NtfyConstants.DEFAULT_HOST);
             } else {
-                request.setUrl(NtfyConstants.HTTPS + request.getHost() + "/");
+                String protocol = request.getHost().contains(NtfyConstants.LOCALHOST) ? NtfyConstants.HTTP : NtfyConstants.HTTPS;
+                request.setUrl(protocol + request.getHost() + "/");
             }
             if (null == request.getPriority()) {
                 request.setPriority(PRIORITY.DEFAULT);
             }
+            System.out.println("Request : " + request);
             response = sendPublishRequest(request);
         } catch (IOException e) {
             logger.severe(NtfyConstants.CONNECTION_ERROR_MSG);
@@ -56,9 +58,9 @@ public class PubServiceImpl implements PubService {
             con.setRequestProperty(NtfyConstants.CONTENT_TYPE, "application/json");
 
             //handle authentication (if supplied)
-            if(request.getAccessToken() != null){
+            if (request.getAccessToken() != null) {
                 con.setRequestProperty("Authorization", "Bearer " + request.getAuthToken());
-            }else if(request.getAuthToken() != null){
+            } else if (request.getAuthToken() != null) {
                 con.setRequestProperty("Authorization", "Basic " + request.getAuthToken());
             }
             // Enable input/output streams
