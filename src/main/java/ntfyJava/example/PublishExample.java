@@ -15,7 +15,7 @@ public class PublishExample {
         PubClient client = new NtfyClient(ClientType.PUB).getClient();
         NtfyRequest request = new NtfyRequest();
         request.setTopic("test_ntfy2");
-        request.setMessage("Look ma, **bold text**, *italics*, ...");
+        request.setMessage("Look ma, **bold text**, *italics*, emoji 🥳 🤟 🕊️...");
         request.setTitle("This is the obj msg");
         request.setPriority(PRIORITY.MAX);
         request.setAttach("https://media.licdn.com/dms/image/D4E03AQEZTNXuX3kG7g/profile-displayphoto-shrink_400_400/0/1669618932666?e=1699488000&v=beta&t=q2z_UDFvwTZa02SligKZqgwk66BjuXQZxWtQF_K1Jqw");

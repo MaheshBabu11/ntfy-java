@@ -8,10 +8,11 @@ import ntfyJava.core.model.PRIORITY;
 import ntfyJava.core.model.RequestModel;
 import ntfyJava.core.common.NtfyConstants;
 
-import java.io.DataOutputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
 public class PubServiceImpl implements PubService {
@@ -55,7 +56,7 @@ public class PubServiceImpl implements PubService {
             URL obj = new URL(request.getUrl());
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod(NtfyConstants.POST);
-            con.setRequestProperty(NtfyConstants.CONTENT_TYPE, "application/json");
+            con.setRequestProperty(NtfyConstants.CONTENT_TYPE, "application/json; charset=utf-8");
 
             //handle authentication (if supplied)
             if (request.getAccessToken() != null) {
@@ -66,9 +67,9 @@ public class PubServiceImpl implements PubService {
             // Enable input/output streams
             con.setDoOutput(true);
 
-            try (DataOutputStream wr = new DataOutputStream(con.getOutputStream())) {
-                wr.writeBytes(new ObjectMapper().writeValueAsString(createPublishRequest(request)));
-                wr.flush();
+            try (BufferedOutputStream outputStream = new BufferedOutputStream(con.getOutputStream());) {
+                String json = new ObjectMapper().writeValueAsString(createPublishRequest(request));
+                outputStream.write(json.getBytes(StandardCharsets.UTF_8));
             }
             // Get the response from the server
             int responseCode = con.getResponseCode();
